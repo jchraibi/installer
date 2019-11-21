@@ -59,3 +59,8 @@ variable "ipam_token" {
 variable "ip_addresses" {
   type = "list"
 }
+
+variable "mac_addresses" {
+  type = "list"
+}
+

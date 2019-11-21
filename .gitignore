@@ -1,1 +1,3 @@
 /bin/
+/upi/vsphere/terraforms.tfvars
+/upi/vsphere/.terraform

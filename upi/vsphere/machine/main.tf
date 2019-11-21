@@ -4,7 +4,7 @@ data "vsphere_datastore" "datastore" {
 }
 
 data "vsphere_network" "network" {
-  name          = "${var.network}"
+  name          = "openshift"
   datacenter_id = "${var.datacenter_id}"
 }
 
@@ -30,12 +30,15 @@ resource "vsphere_virtual_machine" "vm" {
 
   network_interface {
     network_id = "${data.vsphere_network.network.id}"
+    adapter_type="e1000"
+    use_static_mac = "true"
+    mac_address = "${var.mac_addresses[count.index]}"
   }
 
   disk {
     label            = "disk0"
-    size             = 60
-    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
+    size             = 100
+    thin_provisioned = "true"
   }
 
   clone {

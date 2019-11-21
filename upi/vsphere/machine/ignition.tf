@@ -1,6 +1,9 @@
 locals {
-  mask = "${element(split("/", var.machine_cidr), 1)}"
-  gw   = "${cidrhost(var.machine_cidr,1)}"
+  //mask = "${element(split("/", var.machine_cidr), 1)}"
+  //gw   = "${cidrhost(var.machine_cidr,1)}"
+  gw   = "192.168.1.9"
+  mask = "255.255.255.0"
+
 
   ignition_encoded = "data:text/plain;charset=utf-8;base64,${base64encode(var.ignition)}"
 }
@@ -35,7 +38,7 @@ IPADDR=${local.ip_addresses[count.index]}
 PREFIX=${local.mask}
 GATEWAY=${local.gw}
 DOMAIN=${var.cluster_domain}
-DNS1=8.8.8.8
+DNS1=192.168.1.9
 EOF
   }
 }

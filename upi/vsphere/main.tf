@@ -40,6 +40,7 @@ module "bootstrap" {
   ipam             = "${var.ipam}"
   ipam_token       = "${var.ipam_token}"
   ip_addresses     = ["${compact(list(var.bootstrap_ip))}"]
+  mac_addresses    = ["${compact(list(var.bootstrap_mac))}"]
   machine_cidr     = "${var.machine_cidr}"
 }
 
@@ -59,6 +60,7 @@ module "control_plane" {
   ipam             = "${var.ipam}"
   ipam_token       = "${var.ipam_token}"
   ip_addresses     = ["${var.control_plane_ips}"]
+  mac_addresses    = ["${var.control_plane_macs}"]
   machine_cidr     = "${var.machine_cidr}"
 }
 
@@ -78,9 +80,11 @@ module "compute" {
   ipam             = "${var.ipam}"
   ipam_token       = "${var.ipam_token}"
   ip_addresses     = ["${var.compute_ips}"]
+  mac_addresses    = ["${var.compute_macs}"]
   machine_cidr     = "${var.machine_cidr}"
 }
 
+/*
 module "dns" {
   source = "./route53"
 
@@ -93,3 +97,4 @@ module "dns" {
   compute_count       = "${var.compute_count}"
   compute_ips         = ["${module.compute.ip_addresses}"]
 }
+*/

@@ -131,3 +131,18 @@ variable "compute_ips" {
   type    = "list"
   default = []
 }
+
+variable "control_plane_macs" {
+  type    = "list"
+  default = []
+}
+
+variable "compute_macs" {
+  type    = "list"
+  default = []
+}
+
+variable "bootstrap_mac" {
+  type    = "string"
+  default = ""
+}
